@@ -11,14 +11,14 @@ steps:
   - name: 'gcr.io/cloud-builders/kubectl'
     args: ['apply', '-f', './deployment/tex-deployment.yaml']
     env:
-      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+      - 'CLOUDSDK_COMPUTE_ZONE=us-west1-a'
       - 'CLOUDSDK_CONTAINER_CLUSTER=producer-cluster'
 
   # Update the deployment with the new image
   - name: 'gcr.io/cloud-builders/kubectl'
     args: ['set', 'image', 'deployment/text-generation-app', 'text-generation-app=gcr.io/$PROJECT_ID/text-generation-app:$SHORT_SHA']
     env:
-      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+      - 'CLOUDSDK_COMPUTE_ZONE=us-west1-a'
       - 'CLOUDSDK_CONTAINER_CLUSTER=producer-cluster'
 
 options:
